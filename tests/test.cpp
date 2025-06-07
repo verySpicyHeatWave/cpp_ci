@@ -7,7 +7,7 @@ TEST(AdditionTest, PositiveNumbers) {
 }
 
 TEST(AdditionTest, NegativeNumbers) {
-    EXPECT_EQ(add(-2, -3), -4);
+    EXPECT_EQ(add(-2, -3), -5);
 }
 
 TEST(AdditionTest, MixedSign) {
