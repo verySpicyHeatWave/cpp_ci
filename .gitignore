@@ -34,3 +34,7 @@
 # Directories
 obj/
 bin/
+.vscode/
+
+# Other files
+compile_commands.json

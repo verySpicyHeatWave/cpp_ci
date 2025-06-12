@@ -1,30 +1,37 @@
-name: Hello World CI
+name: Test Repo CI
 run-name: ${{ github.actor }} is testing out Github Actions
-on: [push]
+on:
+  push:
+    branches: [main]
 
 jobs:
-  Explore-Github-Actions:
+  build:
+    name: Run Linter
     runs-on: ubuntu-24.04
     steps:
-      - name: Initial messages
-        run: |
-          echo "Hi mom!"
-          echo "The job was automatically triggered by a ${{ github.event_name }} event!"
-          echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - name: Check out repository code
+      - name: Checkout
         uses: actions/checkout@v4
-      - name: Install test dependencies
+
+      - name: Install dependencies
         run: |
-         sudo apt install libgtest-dev
+          sudo apt update
+          sudo apt install -y \
+            libgtest-dev \
+            build-essential \
+            bear \
+            make \
+            g++
+
+      - name: Prepare environment
+        run:  bear -- make
+
+      - name: Run the linter
+        run: make lint
+
       - name: Execute Unit tests
-        run: |
-          make test
+        run: make test
+
       - name: Post-checkout messages
         run: |
-          echo "The ${{ github.repository }} repository has been cloned to the runner."
-          echo "The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - name: Report status
-        run: echo "This job's status is ${{ job.status }}"
+          echo "Looks like your tests on ${{ github.repository }} were all good!"
+          echo "FINAL STATUS: ${{ job.status }}"
