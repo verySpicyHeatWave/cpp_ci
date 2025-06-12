@@ -1,11 +1,8 @@
 #include <iostream>
-
-#include "add.h"
-#include "hello.h"
-
-using namespace std;
+#include "add.hpp"
+#include "hello.hpp"
 
 int main() {
     hello();
-    cout << "12 + 14 = " << add(12, 14) << endl;
+    std::cout << "12 + 14 = " << add(12, 14) << std::endl;
 }

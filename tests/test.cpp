@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "add.h"
-#include "hello.h"
+#include "add.hpp"
+#include "hello.hpp"
 
 TEST(AdditionTest, PositiveNumbers) {
     EXPECT_EQ(add(2 , 3), 5);

@@ -31,10 +31,10 @@ Green=\033[0;38;5;40m
 Yellow=\033[0;33m
 
 # Phony Target Declaration
-.PHONY: all run clean
+.PHONY: all run lint clean test
 
 # Default target
-all: main
+all: $(TARGET)
 
 # Build target
 $(TARGET): $(MAIN_OBJ)
@@ -69,6 +69,9 @@ clean:
 	@rm -rf $(OBJ_DIR)
 	@printf "Done!\n"
 
+lint:
+	@./run-linter.sh
+
 test: $(TESTFILE)
 	@printf "\n#### Running $(Yellow)test$(Reset) binary...\n\n"
 	@./$<
@@ -79,5 +82,3 @@ $(TESTFILE): $(TEST_OBJ)
 	@printf "Compiling $(Yellow)test$(Reset) binary...\n"
 	@$(CXX) $(CXXFLAGS) -o $@ $^ $(TESTFLAGS)
 	@printf "$(Green)Complete$(Reset)\n"
-
-
