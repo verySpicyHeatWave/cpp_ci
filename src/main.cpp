@@ -4,5 +4,5 @@
 
 int main() {
     hello();
-    std::cout << "12 + 14 = " << add(12, 14) << std::endl;
+    std::cout << "12 + 14 = " << add(12, 14) << "\n";
 }
