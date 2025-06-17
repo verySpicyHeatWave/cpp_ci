@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  Lint-And-Test:
+  Lint-and-Test:
     name: Lint and Test
     runs-on: ubuntu-24.04
     steps:
